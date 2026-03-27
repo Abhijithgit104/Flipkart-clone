@@ -5,21 +5,16 @@ body {
     overflow-x: hidden;   
 }
 .content{
-
-    width:100vw;
+    width: 100%;
     height: auto;
     min-height: 100vh;
-    overflow-x: auto;    
-    /* margin: auto; */
-     display: flex;
+    display: flex;
     flex-direction: column;
     gap: 10px;
     overflow-x: hidden;
-
-   
 }
 .main {
-    width: 100%;          
+    width: auto;          
     height: auto;
     background-color: #F1F3F6;
     display: flex;
@@ -38,13 +33,18 @@ body {
 }
 
 .nav{
-    width: auto;
+    width: 100%;
     height: 80px;
     background-color:#ffffff;
-    /* line-height: 1; */
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 10px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+@media screen and (min-width: 1440px) {
+    .nav { gap: 50px; } /* Restore original gap for large screens */
 }
 .logo{
     width:150px;
@@ -56,7 +56,8 @@ body {
 }
 
 .search-box{
-    width: 700px;
+    flex: 1;
+    max-width: 700px;
     background-color:#F1F3F6;
     height: 30px;
     display: flex;
@@ -65,13 +66,13 @@ body {
     margin-left: 0;
     gap: 10px;
     border-radius: 10px;
-    
 }
     .search-box input{
-        font-size: 20px;
-        width:700px;
+        font-size: 16px;
+        width: 100%;
         background-color:#F1F3F6;
         border: none;
+        outline: none;
     }
     .material-icons{
         padding: 2px; 
@@ -203,21 +204,25 @@ margin:5px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
 }
-.oppo-ad.cover{
-   
+.oppo-ad-cover {
+    width: 250px;
+    height: 250px;
+    margin-left: 50px;
 }
-.container1,.container2{
+.container1, .container2 {
     width: 500px;
     height: auto;
     background-color: #ffffff;
+    box-sizing: border-box;
 }
-.top-picks{
+
+.top-picks {
     height: auto;
     width: 550px;
-    margin: 20px;
+    margin: 20px 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: last baseline;
+    justify-content: center;
 }
 .picks{
     width: 250px;
@@ -373,9 +378,82 @@ footer {
 
 .footer-site {
   color: white;
-  margin-left: -150px;
 }
 
-.footer-call span {
-  color: blue;
+/* Responsive Media Queries */
+@media screen and (max-width: 1240px) {
+    .nav { gap: 15px; padding: 0 10px; }
+    .logo { margin-left: 10px; width: 120px; }
+    .search-box { max-width: 400px; }
+    .middle { flex-direction: column; align-items: center; }
+    .right-ad { width: 100%; display: flex; justify-content: center; }
+    .right-ad img { width: 100%; height: auto; max-width: 800px; }
+    .container2 { width: 100%; max-width: 800px; }
+    .top-picks { width: 100%; justify-content: center; box-sizing: border-box; }
+    .oppo-ad-cover { display: none; }
 }
+
+@media screen and (max-width: 992px) {
+    .category { gap: 15px; overflow-x: auto; justify-content: flex-start; padding: 10px; }
+    .category::-webkit-scrollbar { display: none; }
+    .category .item { flex-shrink: 0; min-width: 80px; }
+    .brands-container { overflow-x: auto; width: 100%; padding-bottom: 20px; }
+    .brands-container::-webkit-scrollbar { display: none; }
+    .brands { flex-shrink: 0; margin-left: 15px; }
+    .furniture-deals { height: auto; }
+    .f-items { overflow-x: auto; justify-content: flex-start; padding: 10px; }
+    .f-items::-webkit-scrollbar { display: none; }
+    .furniture { flex-shrink: 0; }
+    .footer-links { gap: 30px; flex-wrap: wrap; justify-content: center; }
+}
+
+@media screen and (max-width: 768px) {
+    .nav { 
+        height: auto; 
+        flex-wrap: wrap; 
+        padding: 5px 10px; 
+        justify-content: flex-start;
+        column-gap: 15px;
+        row-gap: 5px;
+    }
+    .logo { margin: 0; width: 90px; height: auto; order: 1; flex-shrink: 0; }
+    .dot { order: 10; margin-top: 5px; margin-left: auto; }
+    
+    .search-box { 
+        order: 20; 
+        width: 100%; 
+        max-width: none; 
+        margin: 5px 0; 
+        flex: none; 
+    }
+    
+    .login, .cart, .shop { 
+        order: 2; 
+        font-size: 13px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+    }
+    .login select { font-size: 13px !important; width: auto; background: transparent; }
+    .shop span, .cart span { font-size: 13px !important; white-space: nowrap; }
+    .login img, .cart img, .shop img { width: 16px; height: auto; margin-right: 3px; }
+
+    .middle { gap: 20px; }
+    .container2 { max-width: 100%; margin: 0; }
+    .top-picks { margin: 10px 0; justify-content: center; width: 100%; }
+    .picks { width: 45%; min-width: 140px; height: auto; padding-bottom: 10px; }
+    .picks img { width: 100px; height: 130px; }
+    .picks p { font-size: 14px; text-align: center; }
+}
+
+@media screen and (max-width: 480px) {
+    .nav { column-gap: 10px; }
+    .shop span, .cart span, .login span { font-size: 12px !important; }
+    .login img, .cart img, .shop img { width: 14px; }
+    .picks { width: 48%; margin: 1%; }
+    .footer-column { min-width: 100%; text-align: center; border-bottom: 1px solid #333; padding-bottom: 10px; }
+    .footer-column-large { border-left: none; padding-left: 0; text-align: center; }
+    .footer-bottom-bar { flex-direction: column; gap: 15px; text-align: center; }
+    .footer-payments { margin-right: 0 !important; }
+}
+
